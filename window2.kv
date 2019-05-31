@@ -1,0 +1,51 @@
+<Window2>
+	canvas:
+		Color:
+            rgb: (0.55, 0.55, 0.55)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        pos: root.pos
+        size: root.size
+
+        Label:
+            text: '電撃イライラ棒(仮称)プレイ記念ラベル印刷'
+            color: 0,0,1,1
+            font_size:'40sp'
+            size_hint_y: 0.2
+            canvas.before:
+                Color:
+                    rgba: 0.55, 0.69, 0.97, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Label:
+            text: '遊んでくれてありがとう！\nプレイ記念ラベルを印刷しますか？'
+            font_size:'32sp'
+            size_hint_y: 0.3
+
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 40,40,40,40
+            spacing: 20
+            size_hint: 1.0, 1.0
+
+            Button:
+                id: btnOn
+                background_normal:''
+                background_color: 1,0,0,0.4
+                text: 'はい'
+                font_size: 40
+                on_press: root.on()
+
+            Button:
+                id: btnOff
+                text: 'いいえ'
+                background_normal:''
+                background_color: 0.75,0.75,0.75,1
+                font_size: 40
+                on_press: root.off()
+
