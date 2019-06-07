@@ -13,15 +13,15 @@ class Window2(BoxLayout):
     print_data = None
 
     def on(self):
-        print('on!')
+        print('print.')
         if self.print_data != None:
-            inspng.make_png(self.print_data['TIME'], self.print_data['SCORE'], './result.png')
+            inspng.make_png(self.print_data['score']['time'], self.print_data['score']['score'], './result.png')
             cmd = "brother_ql print -l 62 --red ./result.png"
             cmd = shlex.split(cmd)
             ret = subprocess.check_output(cmd)
  
     def off(self):
-        print('off!')
+        print('not print.')
 
     def set_print_data(self, data):
         self.print_data = data

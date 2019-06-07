@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*
 import kivy
 import threading
-import jserial
+#import jserial
 import inspng
+import json
+import codecs
+import time
 
 from kivy.app import App
 from kivy.core.window import Window
@@ -28,7 +31,7 @@ from window2 import Window2    # 追加
 class MainRoot(BoxLayout):
     window1 = None
     window2 = None
-    ser = jserial.Jserial("/dev/rfcomm0", 115200)
+    #ser = jserial.Jserial("/dev/rfcomm0", 115200)
 
     def __init__(self, **kwargs):
         # 起動時に各画面を作成して使い回す
@@ -49,10 +52,21 @@ class MainRoot(BoxLayout):
         self.add_widget(self.window2)
 
     def recv_msg(self):
-        while True:
-            self.dict = self.ser.get_dict()
-            self.window2.set_print_data(self.dict)
-            self.change_disp2()
+        comm_path = '../comm.txt'
+        with codecs.open(comm_path, 'r', 'utf-8') as f:
+            #print(f.readline())
+            while True:
+                #self.dict = self.ser.get_dict()
+                self.read_data = f.readline()
+                self.read_data.rstrip('\n')
+                try:
+                    self.dict = json.loads(self.read_data, 'utf-8')
+                    print(self.dict)
+                    self.window2.set_print_data(self.dict)
+                    self.change_disp2()
+                except:
+                    print ".",
+                    time.sleep(1)
 
 
 class MainApp(App):
