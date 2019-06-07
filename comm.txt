@@ -1,0 +1,3 @@
+{"score": {"time": 12345, "name": "test", "score": 99999, "miss": 12345}}
+{"score": {"time": 12345, "name": "test", "score": 99998, "miss": 12345}}
+{"score": {"time": 12345, "name": "test", "score": 99998, "miss": 12345}}

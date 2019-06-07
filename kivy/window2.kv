@@ -39,7 +39,7 @@
                 background_color: 1,0,0,0.4
                 text: 'はい'
                 font_size: 40
-                on_press: root.on()
+                on_press: root.on(); app.root.change_disp()
 
             Button:
                 id: btnOff
@@ -47,5 +47,5 @@
                 background_normal:''
                 background_color: 0.75,0.75,0.75,1
                 font_size: 40
-                on_press: root.off()
+                on_press: root.off(); app.root.change_disp()
 

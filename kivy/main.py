@@ -4,6 +4,8 @@ import threading
 #import jserial
 import inspng
 import json
+import codecs
+import time
 
 from kivy.app import App
 from kivy.core.window import Window
@@ -51,13 +53,20 @@ class MainRoot(BoxLayout):
 
     def recv_msg(self):
         comm_path = '../comm.txt'
-        while True:
-            #self.dict = self.ser.get_dict()
-            with open(comm_path) as f:
+        with codecs.open(comm_path, 'r', 'utf-8') as f:
+            #print(f.readline())
+            while True:
+                #self.dict = self.ser.get_dict()
                 self.read_data = f.readline()
-                self.dict = json.loads(self.read_data)
-            self.window2.set_print_data(self.dict)
-            self.change_disp2()
+                self.read_data.rstrip('\n')
+                try:
+                    self.dict = json.loads(self.read_data, 'utf-8')
+                    print(self.dict)
+                    self.window2.set_print_data(self.dict)
+                    self.change_disp2()
+                except:
+                    print ".",
+                    time.sleep(1)
 
 
 class MainApp(App):

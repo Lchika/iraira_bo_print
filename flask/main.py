@@ -27,8 +27,8 @@ def handle_root():
     with urllib.request.urlopen(req) as res:
       res.read()
     with open(comm_path, mode='a') as f:
-      f.write(request.json)
+      f.write(json.dumps(request.json) + '\n')
     return 'score was sent'
 
 if __name__ == '__main__':
-  app.run()
+  app.run("0.0.0.0", debug=True)
