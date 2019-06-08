@@ -2,6 +2,9 @@
 
 Connect to [IrairaBoScoreBoard](https://github.com/Lchika/IrairaBoScoreBoard) and control score datas as central server.
 
+## Usage
+- `bash run.sh` 
+
 ## Library
 - GUI library
   - [Kivy](https://kivy.org/#home)
