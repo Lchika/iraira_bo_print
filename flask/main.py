@@ -1,3 +1,4 @@
+#!/usr/bin/python -u
 # coding: utf-8
 
 from flask import *
@@ -12,7 +13,7 @@ def handle_root():
   if request.method == "GET":
     return 'IBPS(Iraira Bo Print Server) is running'
   else:
-    comm_path = '../comm.txt'
+    comm_path = '/home/pi/work/iraira/iraira_bo_print/comm.txt'
   
     if request.headers['Content-Type'] != 'application/json':
         print(request.headers['Content-Type'])
@@ -23,6 +24,7 @@ def handle_root():
     headers = {
       'Content-Type': 'application/json',
     }
+    app.logger.info(request.json)
     req = urllib.request.Request(url, json.dumps(request.json).encode(), headers)
     with urllib.request.urlopen(req) as res:
       res.read()
@@ -32,3 +34,4 @@ def handle_root():
 
 if __name__ == '__main__':
   app.run("0.0.0.0", debug=True)
+  #app.run("0.0.0.0")

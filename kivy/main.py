@@ -52,7 +52,7 @@ class MainRoot(BoxLayout):
         self.add_widget(self.window2)
 
     def recv_msg(self):
-        comm_path = '../comm.txt'
+        comm_path = '/home/pi/work/iraira/iraira_bo_print/comm.txt'
         with codecs.open(comm_path, 'r', 'utf-8') as f:
             #print(f.readline())
             while True:
