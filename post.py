@@ -4,12 +4,12 @@ import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-url = 'http://192.168.11.25:5000/'
+url = 'http://192.168.100.25:5000/'
 data = {
   'score':{
-    'time': 12345,
-    'miss': 12345,
-    'score': 99998,
+    'time': 987654321,
+    'miss': 987654321,
+    'score': 987654321,
     'name': 'test',
   }
 }
