@@ -20,14 +20,20 @@ def handle_root():
         return jsonify(res='error'), 400
 
     ssl._create_default_https_context = ssl._create_unverified_context
-    url = 'https://lchika.club/scores'
+    url_score_site = 'https://lchika.club/scores'
+    url_result_server = 'http://192.168.100.111'
     headers = {
       'Content-Type': 'application/json',
     }
     app.logger.info(request.json)
-    req = urllib.request.Request(url, json.dumps(request.json).encode(), headers)
+    req = urllib.request.Request(url_score_site, json.dumps(request.json).encode(), headers)
     with urllib.request.urlopen(req) as res:
-      res.read()
+      res_html = res.read().decode('utf-8')
+      print('score_site res=' + res_html)
+    req = urllib.request.Request(url_result_server, json.dumps(request.json).encode(), headers)
+    with urllib.request.urlopen(req) as res:
+      res_html = res.read().decode('utf-8')
+      print('result_sserver res=' + res_html)
     with open(comm_path, mode='a') as f:
       f.write(json.dumps(request.json) + '\n')
     return 'score was sent'
