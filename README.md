@@ -6,7 +6,7 @@ Connect to [IrairaBoScoreBoard](https://github.com/Lchika/IrairaBoScoreBoard) an
 - `bash run.sh` 
 
 ## Architecture
-<img src="https://github.com/Lchika/iraira_bo_print/blob/master/pic/IBNS_Architecture.png" width="400px">
+<img src="https://github.com/Lchika/iraira_bo_print/blob/master/doc/IBNS_Architecture.png" width="400px">
 
 ## Library
 - GUI library
