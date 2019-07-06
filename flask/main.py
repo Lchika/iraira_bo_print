@@ -31,9 +31,12 @@ def handle_root():
       res_html = res.read().decode('utf-8')
       print('score_site res=' + res_html)
     req = urllib.request.Request(url_result_server, json.dumps(request.json).encode(), headers)
-    with urllib.request.urlopen(req) as res:
-      res_html = res.read().decode('utf-8')
-      print('result_sserver res=' + res_html)
+    try:
+      with urllib.request.urlopen(req) as res:
+        res_html = res.read().decode('utf-8')
+        print('result_sserver res=' + res_html)
+    except:
+      app.logger.info('Error: failed to request to result server')
     with open(comm_path, mode='a') as f:
       f.write(json.dumps(request.json) + '\n')
     return 'score was sent'
