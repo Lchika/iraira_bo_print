@@ -22,7 +22,7 @@ class Window2(BoxLayout):
     def on_impl(self, dt):
         print('print.')
         if self.print_data != None:
-            inspng.make_png(self.print_data['score']['time'], self.print_data['score']['score'], './result.png')
+            inspng.make_png(self.print_data['score']['time'], self.print_data['score']['miss'], './result.png')
             cmd = "brother_ql print -l 62 --red ./result.png"
             cmd = shlex.split(cmd)
             ret = subprocess.check_output(cmd)
